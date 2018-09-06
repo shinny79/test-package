@@ -31,29 +31,12 @@
         <!-- GIT COMMIT ID PLUGIN CONFIGURATION -->
         <plugins>
             <plugin>
-                <artifactId>versions-maven-plugin</artifactId>
-                <groupId>org.codehaus.mojo</groupId>
-                <version>2.2</version>
-                <executions>
-                    <execution>
-                        <phase>initialize</phase>
-                        <goals>
-                            <goal>set</goal>
-                        </goals>
-                        <configuration>
-                            <!--这是新版本号-->
-                            <newVersion>5.${git.closest.tag.commit.count}</newVersion>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
                 <groupId>pl.project13.maven</groupId>
                 <artifactId>git-commit-id-plugin</artifactId>
                 <version>2.2.4</version>
                 <executions>
                     <execution>
-                        <phase>initialize</phase>
+                        <phase>validate</phase>
                         <goals>
                             <goal>revision</goal>
                         </goals>
@@ -87,30 +70,54 @@
                     </replacementProperties>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <artifactId>versions-maven-plugin</artifactId>
+                <groupId>org.codehaus.mojo</groupId>
+                <version>2.2</version>
+
+                <configuration>
+                    <!--这是新版本号-->
+                    <newVersion>5.${git.closest.tag.commit.count}</newVersion>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>set</goal>
+                        </goals>
+                        <configuration>
+                            <!--这是新版本号-->
+                            <newVersion>5.${git.closest.tag.commit.count}</newVersion>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-install-plugin</artifactId>
                 <version>2.5.2</version>
                 <executions>
-                    <!--<execution>-->
-                        <!--<goals>-->
-                            <!--<goal>install</goal>-->
-                        <!--</goals>-->
-                        <!--<phase>install</phase>-->
-                        <!--<configuration>-->
-                            <!--<skip>true</skip>-->
-                        <!--</configuration>-->
-                    <!--</execution>-->
                     <execution>
                         <goals>
-                            <goal>install-file</goal>
+                            <goal>install</goal>
                         </goals>
                         <phase>install</phase>
                         <configuration>
-                            <file>target/${project.build.finalName}.${project.packaging}</file>
-                            <version>5-.${git.closest.tag.commit.count}</version>
+                            <skip>true</skip>
                         </configuration>
                     </execution>
+                    <!--<execution>-->
+                        <!--<goals>-->
+                            <!--<goal>install-file</goal>-->
+                        <!--</goals>-->
+                        <!--<phase>install</phase>-->
+                        <!--<configuration>-->
+                            <!--<file>target/${project.build.finalName}.${project.packaging}</file>-->
+                            <!--<version>5-.${git.closest.tag.commit.count}</version>-->
+                        <!--</configuration>-->
+                    <!--</execution>-->
                 </executions>
             </plugin>
             <!--<plugin>-->
