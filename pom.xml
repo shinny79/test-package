@@ -7,7 +7,7 @@
     <groupId>dxn.testpackage</groupId>
     <artifactId>test-package</artifactId>
     <!--<version>5.${git.closest.tag.commit.count}</version>-->
-    <version>XXX</version>
+    <version>5.6</version>
 
     <dependencies />
 
@@ -43,31 +43,32 @@
                     <!--</execution>-->
                 <!--</executions>-->
                 <configuration>
-                    <verbose>true</verbose>
+                    <!--<verbose>true</verbose>
+                    -->
                     <generateGitPropertiesFile>true</generateGitPropertiesFile>
                     <injectAllReactorProjects>true</injectAllReactorProjects>
-                    <dateFormat>yyyy.MM.dd HH:mm:ss</dateFormat>
-                    <verbose>true</verbose>
-                    <gitDescribe>
+                    <!--<dateFormat>yyyy.MM.dd HH:mm:ss</dateFormat>-->
+                    <!--<verbose>true</verbose>-->
+                    <!--<gitDescribe>-->
                         <!--是否生成描述属性-->
-                        <skip>false</skip>
+                        <!--<skip>false</skip>-->
                         <!--提交操作未发现tag时,仅打印提交操作ID,-->
-                        <always>false</always>
+                        <!--<always>false</always>-->
                         <!--提交操作ID显式字符长度,最大值为:40;默认值:7; 0代表特殊意义;后面有解释; -->
-                        <abbrev>7</abbrev>
+                        <!--<abbrev>7</abbrev>-->
                         <!--构建触发时,代码有修改时(即"dirty state"),添加指定后缀;默认值:"";-->
-                        <dirty>-dirty</dirty>
+                        <!--<dirty>-dirty</dirty>-->
                         <!--always print using the "tag-commits_from_tag-g_commit_id-maybe_dirty" format, even if "on" a tag. The distance will always be 0 if you're "on" the tag. -->
-                        <forceLongFormat>false</forceLongFormat>
-                    </gitDescribe>
-                    <replacementProperties>
-                        <replacementProperty>
-                            <token>-</token>
-                            <value>.</value>
-                            <regex>true</regex>
-                        </replacementProperty>
+                        <!--<forceLongFormat>false</forceLongFormat>-->
+                    <!--</gitDescribe>-->
+                    <!--<replacementProperties>-->
+                        <!--<replacementProperty>-->
+                            <!--<token>-</token>-->
+                            <!--<value>.</value>-->
+                            <!--<regex>true</regex>-->
+                        <!--</replacementProperty>-->
 
-                    </replacementProperties>
+                    <!--</replacementProperties>-->
                 </configuration>
             </plugin>
 
